@@ -9,10 +9,15 @@ const Home = () => (
     <Nav />
 
     <div className="hero">
-      <h1 className="title">Welcome to Next!</h1>
+      <h1 className="title">SureHired.</h1>
       <p className="description">
-        To get started, edit <code>pages/index.js</code> and save to reload.
+        Boost your chances of getting hired right now!
       </p>
+
+      <div className="row">
+        <div className="col-md-6">Hello</div>
+        <div className="col-md-6">World</div>
+      </div>
 
       <div className="row">
         <Link href="https://github.com/zeit/next.js#getting-started">
