@@ -41,9 +41,8 @@ const Head = props => (
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     />
-
-    <link href="/static/css/styles.css" rel="stylesheet" />
     <script src="/static/js/bootstrap.min.js" />
+    <link href="/static/css/styles.css" rel="stylesheet" />
     <meta property="og:url" content={props.url || defaultOGURL} />
     <meta property="og:title" content={props.title || ''} />
     <meta

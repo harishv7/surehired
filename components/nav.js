@@ -38,28 +38,13 @@ const Nav = () => (
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#services">
-              SERVICES
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#portfolio">
-              PORTFOLIO
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#testimonials">
-              TESTIMONIALS
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#connect">
-              CONNECT
+            <a className="nav-link" href="#contact">
+              CONTACT
             </a>
           </li>
           <li className="nav-item">
             <a className="nav-link" href="#contact">
-              CONTACT
+              TRY NOW!
             </a>
           </li>
         </ul>
