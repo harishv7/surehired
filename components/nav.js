@@ -11,67 +11,59 @@ const links = [
 })
 
 const Nav = () => (
-  <nav className="navbar navbar-expand-lg navbar-light bg-light">
-    <a className="navbar-brand" href="#">
-      Navbar
-    </a>
-    <button
-      className="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon" />
-    </button>
-
-    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul className="navbar-nav mr-auto">
-        <li className="nav-item active">
-          <a className="nav-link" href="#">
-            Home <span className="sr-only">(current)</span>
-          </a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">
-            Link
-          </a>
-        </li>
-        <li className="nav-item dropdown">
-          <a
-            className="nav-link dropdown-toggle"
-            href="#"
-            id="navbarDropdown"
-            role="button"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false">
-            Dropdown
-          </a>
-          <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a className="dropdown-item" href="#">
-              Action
+  <nav className="navbar navbar-expand-md fixed-top">
+    <div className="container">
+      <a className="navbar-brand" href="#">
+        <b className="brand-logo">SureHired.</b>
+      </a>
+      <button
+        className="navbar-toggler navbar-toggler-right"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbar2SupportedContent">
+        <i className="fa fa-bars" aria-hidden="true" />
+      </button>
+      <div
+        className="collapse navbar-collapse text-center justify-content-end"
+        id="navbar2SupportedContent">
+        <ul className="navbar-nav">
+          <li className="nav-item">
+            <a className="nav-link" href="#home">
+              HOME
             </a>
-            <a className="dropdown-item" href="#">
-              Another action
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="#about">
+              ABOUT
             </a>
-            <div className="dropdown-divider" />
-            <a className="dropdown-item" href="#">
-              Something else here
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="#services">
+              SERVICES
             </a>
-          </div>
-        </li>
-        <li className="nav-item">
-          <a
-            className="nav-link disabled"
-            href="#"
-            tabindex="-1"
-            aria-disabled="true">
-            Disabled
-          </a>
-        </li>
-      </ul>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="#portfolio">
+              PORTFOLIO
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="#testimonials">
+              TESTIMONIALS
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="#connect">
+              CONNECT
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="#contact">
+              CONTACT
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
 )
