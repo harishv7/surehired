@@ -14,7 +14,9 @@ const Nav = () => (
   <nav className="navbar navbar-expand-md fixed-top">
     <div className="container">
       <a className="navbar-brand" href="#">
-        <b className="brand-logo">SureHired.</b>
+        <span className="brand-title">
+          Sure<b>Hired</b>
+        </span>
       </a>
       <button
         className="navbar-toggler navbar-toggler-right"

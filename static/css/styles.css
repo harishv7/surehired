@@ -70,7 +70,76 @@ nav {
     color: black;
 }
 
+a:link .navbar-brand {
+    color: black;
+}
+
 .fixed-top.scrolled {
     background-color: #222 !important;
     transition: background-color 200ms linear;
+}
+
+.section {
+    padding: 1em;
+}
+
+.section-heading {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    font-weight: 500;
+}
+
+.section-description {
+    font-size: 1em;
+    font-weight: 300;
+}
+
+.placeholder-img {
+    padding: 1em;
+}
+
+.vertical-align {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+#footer {
+    color: azure;
+    background-color: black;
+}
+
+.brand-title {
+    font-weight: 300;
+}
+
+#footer .brand-title {
+    font-size: 2em;
+    padding: 2em;
+}
+
+.footer-links {
+    padding: 2em;
+}
+
+.credit {
+    padding: 1em;
+}
+
+#about {
+    background-color: #f6f9fc;
+}
+
+.cover-brand-title {
+    font-weight: 300;
+    font-size: 5em;
+}
+
+.cover-description {
+    font-size: 1em;
+}
+
+.cover-subtitle {
+    font-size: 1.4em;
 }

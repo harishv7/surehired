@@ -2,6 +2,8 @@ import React from 'react'
 import Link from 'next/link'
 import Head from '../components/head'
 import Nav from '../components/nav'
+import About from '../components/about'
+import Footer from '../components/footer'
 
 const Home = () => (
   <div>
@@ -9,18 +11,22 @@ const Home = () => (
       <Head title="Home" />
       <Nav />
       <div className="text-center">
-        <div className="container py-5">
+        <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <h1>SureHired 🚀</h1>
-              <p className="lead mb-5 cover-subtitle">
-                Boost your chances of getting hired <b>right now!</b>
+              <span className="cover-brand-title">
+                Sure<b>Hired</b> 🚀
+              </span>
+              <p className="cover-subtitle">
+                Getting you a job is <b>our job.</b>
               </p>
             </div>
           </div>
           <div className="row">
             <div className="col-md-6 offset-md-3">
-              <p>
+              <p className="cover-description">
+                Boost your chances of getting a job in just seconds!
+                <br />
                 SureHired is the best platform for everyone to gather deep
                 analysis of their resume, cover letter and even cover photo!
                 What's more? Get a real recruiter to review your resume and get
@@ -31,19 +37,8 @@ const Home = () => (
         </div>
       </div>
     </div>
-    <div className="section container" id="about">
-      <h1>What is SureHired?</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quis
-        arcu quam. Duis a eleifend diam. Sed orci mauris, cursus vitae nisl
-        malesuada, efficitur pretium erat. Vestibulum vel est ante. Aenean id
-        sollicitudin erat, ut ullamcorper tellus. Nam augue mi, pharetra in
-        vehicula vitae, maximus dignissim elit. Vestibulum ac tincidunt nibh.
-        Cras ac lorem nisi. Praesent suscipit tortor non nunc malesuada, sit
-        amet vestibulum purus commodo. Aliquam vel ipsum mi. Donec non lobortis
-        quam. Nam rhoncus varius nulla sed luctus.
-      </p>
-    </div>
+    <About />
+    <Footer />
   </div>
 )
 
