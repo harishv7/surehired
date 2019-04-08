@@ -30,24 +30,24 @@ const Nav = () => (
         id="navbar2SupportedContent">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <a className="nav-link" href="#home">
-              HOME
-            </a>
+            <Link href="/index">
+              <a className="nav-link">HOME</a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#about">
-              ABOUT
-            </a>
+            <Link href="/about">
+              <a className="nav-link">ABOUT</a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#contact">
-              CONTACT
-            </a>
+            <Link href="/contact">
+              <a className="nav-link">CONTACT</a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#contact">
-              TRY NOW!
-            </a>
+            <Link href="/app">
+              <a className="nav-link">TRY NOW!</a>
+            </Link>
           </li>
         </ul>
       </div>
