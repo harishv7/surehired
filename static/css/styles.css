@@ -143,3 +143,7 @@ a:link .navbar-brand {
 .cover-subtitle {
     font-size: 1.4em;
 }
+
+.contact-form {
+    padding: 4em;
+}
