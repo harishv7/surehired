@@ -6,8 +6,24 @@ const SignUpForm = () => (
     <div className="row">
       <div className="col-md-8 offset-md-2">
         <form>
+        <div className="form-group">
+            <label>First Name</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="John"
+            />
+          </div>
           <div className="form-group">
-            <label for="exampleInputEmail1">Email address</label>
+            <label>Last Name</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Doe"
+            />
+          </div>
+          <div className="form-group">
+            <label>Email address</label>
             <input
               type="email"
               className="form-control"
@@ -19,14 +35,14 @@ const SignUpForm = () => (
             </small>
           </div>
           <div className="form-group">
-            <label for="exampleInputPassword1">Password</label>
+            <label>Password</label>
             <input
               type="password"
               className="form-control"
               placeholder="Password"
             />
           </div>
-          <input type="submit" className="btn btn-primary" value="Login" />
+          <input type="submit" className="btn btn-primary" value="Sign Up" />
         </form>
       </div>
     </div>
