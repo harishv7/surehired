@@ -17,9 +17,9 @@ app.prepare().then(() => {
 
   server.use('/api', routes)
 
-  // server.get('*', (req, res) => {
-  //   return handle(req, res)
-  // })
+  server.get('*', (req, res) => {
+    return handle(req, res)
+  })
 
   server.listen(3000, (err) => {
     if (err) throw err

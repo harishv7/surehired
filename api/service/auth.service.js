@@ -18,10 +18,17 @@ module.exports.createUser = function(data) {
 
 module.exports.loginUser = function(data) {
     return new Promise( (resolve, reject) => {
-        var user = new user(data);
-        console.log(user);
-        user.save().then(res => {
-            resolve(res)
+       User.list({email :data.email})
+        .then(res => {
+            if(res.length>0){
+                if(res[0].password == data.password){
+                    resolve({msg: "Success"})
+                } else {
+                    resolve({msg: "Password mismatch"})
+                }
+            } else {
+            resolve({msg: "Email not found"})
+            }
         }).catch(e => {
          reject(e)
         });
