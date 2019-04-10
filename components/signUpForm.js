@@ -42,7 +42,7 @@ const SignUpForm = () => (
               placeholder="Password"
             />
           </div>
-          <input type="submit" className="btn btn-primary" value="Sign Up" />
+          <input type="submit" className="btn btn-primary" value="Sign Up" onClick={this.submitForm} />
         </form>
       </div>
     </div>

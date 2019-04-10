@@ -5,6 +5,8 @@ const router = express.Router();
 
 // router.route('/').post(tileController.create);
 router.route('/').get(authController.get);
+
+router.route('/register').post(authController.create);
 // router.route('/:id').patch(tileController.patch);
 // router.route('/:id').delete(tileController.delete);
 
