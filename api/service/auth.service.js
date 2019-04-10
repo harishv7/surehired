@@ -4,8 +4,9 @@ const mongoose = require('mongoose');
 const User = mongoose.model('User');
 
 module.exports.createUser = function(data) {
+    console.log("SERVICE REG");
     return new Promise( (resolve, reject) => {
-        var user = new user(data);
+        var user = new User(data);
         user.save().then(res => {
             console.log(res);
             resolve(res)

@@ -24,7 +24,9 @@ const tilesController = {
     },
 
     register: function (req, res, next) {
+        console.log("REGISTER");
         authService.createUser(req.body).then(response => {
+            console.log(response);
          res.send(response);
         }).catch(e => {
          res.send(e);
