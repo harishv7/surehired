@@ -2,13 +2,34 @@ import React from 'react'
 import Link from 'next/link'
 
 class SignUpForm extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+  }
+
   handleSubmit(event) {
     event.preventDefault();
-    const data = new FormData(event.target);
-    console.log(data);
+    console.log(this.state);
+
     fetch('/api/v1/auth/register', {
       method: 'POST',
-      body: data,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(this.state)
     });
   }
 
@@ -22,28 +43,34 @@ class SignUpForm extends React.Component {
                 <label>First Name</label>
                 <input
                   type="text"
+                  name="firstName"
                   className="form-control"
                   placeholder="John"
                   required
+                  onChange={this.handleInputChange}
                 />
               </div>
               <div className="form-group">
                 <label>Last Name</label>
                 <input
                   type="text"
+                  name="lastName"
                   className="form-control"
                   placeholder="Doe"
                   required
+                  onChange={this.handleInputChange}
                 />
               </div>
               <div className="form-group">
                 <label>Email address</label>
                 <input
                   type="email"
+                  name="email"
                   className="form-control"
                   aria-describedby="emailHelp"
                   placeholder="Enter email"
                   required
+                  onChange={this.handleInputChange}
                 />
                 <small id="emailHelp" className="form-text text-muted">
                   We'll never share your email with anyone else.
@@ -53,9 +80,11 @@ class SignUpForm extends React.Component {
                 <label>Password</label>
                 <input
                   type="password"
+                  name="password"
                   className="form-control"
                   placeholder="Password"
                   required
+                  onChange={this.handleInputChange}
                 />
               </div>
               <input type="submit" className="btn btn-primary" value="Sign Up" />
