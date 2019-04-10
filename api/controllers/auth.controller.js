@@ -23,6 +23,22 @@ const tilesController = {
        
     },
 
+    register: function (req, res, next) {
+        authService.createUser(req.body).then(response => {
+         res.send(response);
+        }).catch(e => {
+         res.send(e);
+        })
+     },
+
+     login: function (req, res, next) {
+        authService.loginUser(req.body).then(response => {
+         res.send(response);
+        }).catch(e => {
+         res.send(e);
+        })
+     },
+
 }
 
 module.exports = tilesController;
