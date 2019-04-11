@@ -2,45 +2,44 @@
 const Promise = require('bluebird');
 const authService = require('../service/auth.service');
 
-const tilesController = {
+const authController = {
     create: function (req, res, next) {
-       authService.createUser(req.body).then(response => {
-        res.send(response);
-       }).catch(e => {
-        res.send(e);
-       })
+        authService.createUser(req.body).then(response => {
+            res.send(response);
+        }).catch(e => {
+            res.send(e);
+        })
     },
 
     get: function (req, res, next) {
-       res.send("get detail")
+        res.send("get detail")
     },
 
     patch: function (req, res, next) {
-       
+
     },
 
     delete: function (req, res, next) {
-       
+
     },
 
     register: function (req, res, next) {
-        console.log("REGISTER");
         authService.createUser(req.body).then(response => {
             console.log(response);
-         res.send(response);
+            res.send(response);
         }).catch(e => {
-         res.send(e);
+            res.send(e);
         })
-     },
+    },
 
-     login: function (req, res, next) {
+    login: function (req, res, next) {
         authService.loginUser(req.body).then(response => {
-         res.send(response);
+            res.send(response);
         }).catch(e => {
-         res.send(e);
+            res.send(e);
         })
-     },
+    },
 
 }
 
-module.exports = tilesController;
+module.exports = authController;
