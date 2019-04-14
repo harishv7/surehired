@@ -3,6 +3,7 @@ const http_status = require('http-status'),
 _ = require('lodash');
 const fs = require('fs')
 var AWS = require('aws-sdk');
+const pdfToTextService = require('../service/pdfToText.service');
 
 AWS.config.update({
     accessKeyId: process.env.AWS_ACCESS_KEY,
@@ -45,5 +46,10 @@ module.exports = {
         } else {
             next(new api_error("File Missing"));
         }
+    },
+
+    convertPdfToText: function (req, res, next) {
+        pdfToTextService.convertToText(req.body.url);
+        res.send(200);
     }
 }

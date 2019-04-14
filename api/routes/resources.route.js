@@ -7,5 +7,6 @@ const multipartMiddleware = multipart()
 const router = express.Router();
 
 router.route('/').post(multipartMiddleware, resourceController.uploadResource);
+router.route('/pdf-to-text').post(resourceController.convertPdfToText);
 
 module.exports = router;
