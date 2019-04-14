@@ -5,26 +5,22 @@ import Nav from '../../components/nav'
 import Footer from '../../components/footer'
 import ReactLoading from 'react-loading';
 import Router from 'next/router'
+import FacebookLogin from 'react-facebook-login';
 
-const title = "SureHired"
-const subtitle = ""
-const description = ""
+const responseFacebook = (response) => {
+    console.log(response);
+}
 
 class App extends Component {
     constructor(props) {
         super(props);
-        console.log(props);
         this.onDrop = this.onDrop.bind(this);
+
         this.state = {
             loading: false,
             name: localStorage.getItem('name'),
             userId: localStorage.getItem('userId')
         }
-    }
-
-    componentDidCatch(error, errorInfo) {
-        console.log(errorInfo);
-        Router.push('/login');
     }
 
     async onDrop(acceptedFiles) {
@@ -37,7 +33,7 @@ class App extends Component {
         const url = 'api/v1/resources';
         const formData = new FormData();
         formData.append('file', acceptedFiles[0]);
-        formData.append('type', 'resume');
+        formData.append('type', 'cover-photo');
         formData.append('userId', this.state.userId);
 
         const rawResponse = await fetch('/api/v1/resources', {
@@ -51,14 +47,14 @@ class App extends Component {
 
         console.log(rawResponse);
 
-        // if all good, navigate to step 2
+        // if all good, navigate to step 3
         if (rawResponse.status == 200) {
-            Router.push('/app/stepTwo');
+            Router.push('/app/stepThree');
         } else {
             alert("Oops, something went wrong! :(");
         }
-
     }
+
 
     render() {
         const isLoading = this.state.loading;
@@ -70,31 +66,20 @@ class App extends Component {
                     <div className="container">
                         <div className="row step-1">
                             <div className="col-md-12">
-                                <h1>Welcome {this.state.name}!</h1>
-                                <h2>Step 1 | Resume</h2>
-                                <p>You're taking the first step in boosting your chances of getting hired.</p>
-                                <p>Simply drag and drop your resume
-                                    onto the box or click on it to upload your resume in PDF format.</p>
+                                <h2>Step 3 | Facebook Analysis</h2>
+                                <p>We're almost there!</p>
+                                <p>Let's check how awesome is your Facebook.</p>
+                                <p>We will analyse if there are any social posts which could be deemed as "bad" by your employers.</p>
                             </div>
                         </div>
 
                         <div className="row justify-content-center">
                             <div className="col-md-12">
-                                <Dropzone onDrop={this.onDrop}>
-                                    {({ getRootProps, getInputProps }) => (
-                                        <div {...getRootProps()}>
-                                            <input {...getInputProps()} />
-                                            <div className="dropzone text-center">
-                                                <p>Click me to upload a file!</p>
-                                                <div className="row">
-                                                    <div className="col-md-12 text-center">
-                                                        <span className="loading-bar">{isLoading ? <ReactLoading className="text-center loading-bar" type={"bars"} height={"3em"} width={"3em"} /> : <span />}</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    )}
-                                </Dropzone>
+                                <FacebookLogin
+                                    appId="340465570008336"
+                                    autoLoad={true}
+                                    fields="name,email,picture"
+                                    callback={responseFacebook} />
                             </div>
                         </div>
                     </div>

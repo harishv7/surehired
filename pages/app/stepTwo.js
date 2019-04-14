@@ -4,16 +4,17 @@ import Head from '../../components/head'
 import Nav from '../../components/nav'
 import Footer from '../../components/footer'
 import ReactLoading from 'react-loading';
-
-const title = "SureHired"
-const subtitle = ""
-const description = ""
+import Router from 'next/router'
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.onDrop = this.onDrop.bind(this);
-        this.state = { loading: false, name: localStorage.getItem('name'), userId: localStorage.getItem('userId') }
+        this.state = {
+            loading: false,
+            name: localStorage.getItem('name'),
+            userId: localStorage.getItem('userId')
+        }
     }
 
     async onDrop(acceptedFiles) {

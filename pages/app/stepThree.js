@@ -4,16 +4,17 @@ import Head from '../../components/head'
 import Nav from '../../components/nav'
 import Footer from '../../components/footer'
 import ReactLoading from 'react-loading';
-
-const title = "SureHired"
-const subtitle = ""
-const description = ""
+import Router from 'next/router'
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.onDrop = this.onDrop.bind(this);
-        this.state = { loading: false }
+        this.state = {
+            loading: false,
+            name: localStorage.getItem('name'),
+            userId: localStorage.getItem('userId')
+        }
     }
 
     async onDrop(acceptedFiles) {
@@ -26,7 +27,8 @@ class App extends Component {
         const url = 'api/v1/resources';
         const formData = new FormData();
         formData.append('file', acceptedFiles[0]);
-        formData.append('type', 'cover-letter');
+        formData.append('type', 'cover-photo');
+        formData.append('userId', this.state.userId);
 
         const rawResponse = await fetch('/api/v1/resources', {
             method: 'POST',
@@ -39,8 +41,12 @@ class App extends Component {
 
         console.log(rawResponse);
 
-        // if all good, navigate to step 2
-
+        // if all good, navigate to step 3
+        if (rawResponse.status == 200) {
+            Router.push('/app/stepFour');
+        } else {
+            alert("Oops, something went wrong! :(");
+        }
     }
 
     render() {
@@ -53,7 +59,7 @@ class App extends Component {
                     <div className="container">
                         <div className="row step-1">
                             <div className="col-md-12">
-                                <h2>Step 2 | Cover Photo</h2>
+                                <h2>Step 3 | Cover Photo</h2>
                                 <p>Good job! Your cover letter is in safe hands.</p>
                                 <p>Now let's getting you looking awesome!</p>
                                 <p>Same same, drag or upload your cover photo below.</p>
