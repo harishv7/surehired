@@ -20,10 +20,13 @@ module.exports = {
             var content_type = req.files.file.type
             image = fs.createReadStream(tmp_path);
             image_name = req.files.file.name;
+            const documentType = req.body.type;
+            const userId = req.body.userId;
+
             var directory = req.body.category || "default"
 
             const params = {
-                Bucket: "surehired/" + process.env.NODE_ENV + "/" + directory,
+                Bucket: "surehired/" + userId + "/" + documentType,
                 Key: `${image_name}`,
                 ACL: 'public-read',
                 Body: image,
