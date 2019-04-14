@@ -14,6 +14,7 @@ var s3 = new AWS.S3();
 
 module.exports = {
     uploadResource: function (req, res, next) {
+        console.log(req.body);
         if (req.files.file.path) {
             var tmp_path = req.files.file.path;
             var content_type = req.files.file.type

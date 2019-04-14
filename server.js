@@ -1,4 +1,4 @@
-require('dotenv').config({silent: true});
+require('dotenv').config({ silent: true });
 const express = require('express')
 const db = require('./db')
 const next = require('next')
@@ -14,6 +14,7 @@ app.prepare().then(() => {
   const server = express()
 
   server.use(bodyParser.json())
+  server.use(bodyParser.urlencoded({ extended: true }));
 
   server.use('/api', routes)
 
