@@ -15,8 +15,6 @@ module.exports.createJob = function (data) {
     });
 }
 
-
-
 // var patchData = function (merchantId, data) {
 //     return new Promise(function (resolve, reject) {
 //         var query = {'merchantId':  merchantId };
@@ -27,8 +25,6 @@ module.exports.createJob = function (data) {
 //         })
 //     })
 // }
-
-
 
 // var deleteData = function (merchantId, data) {
 //     return new Promise(function (resolve, reject) {

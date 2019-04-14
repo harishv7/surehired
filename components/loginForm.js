@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import Router from 'next/router'
 
 
 class LoginForm extends React.Component {
@@ -35,6 +36,13 @@ class LoginForm extends React.Component {
 
     const content = await rawResponse.json();
     console.log(content);
+
+    // perform transition to app page
+    if (content.msg == "Success") {
+      Router.push('/stepOne', '/app/1');
+    } else {
+      alert("Your credentials are wrong!");
+    }
   }
 
   render() {

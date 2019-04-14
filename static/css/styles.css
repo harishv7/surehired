@@ -59,6 +59,37 @@ h6 {
     transition: background 0.5s linear;
 }
 
+.app-hero {
+    align-items: center;
+    background-image: url('../images/bg.jpg');
+    background-size: cover;
+    color: #000;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    min-height: 100vh;
+    height: 100px;
+    padding: 0px;
+    padding-top: 0px;
+    /* Transition properties for fading out into another image */
+    -webkit-transition: background 0.5s linear;
+    -moz-transition: background 0.5s linear;
+    -ms-transition: background 0.5s linear;
+    -o-transition: background 0.5s linear;
+    transition: background 0.5s linear;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: linear-gradient(to bottom right,#002f4b,#dc4225);
+        opacity: .6; 
+      }
+}
+
 nav {
     font-family: Montserrat;
     font-size: 14px;
@@ -146,4 +177,20 @@ a:link .navbar-brand {
 
 .contact-form {
     padding: 4em;
+}
+
+.dropzone {
+    background-color: #222;
+    height: 8em;
+    width: 100%;
+    border-radius: 7px;
+    color: white;
+    text-align: center !important;
+    line-height: 100px;
+}
+
+.loading-bar {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
