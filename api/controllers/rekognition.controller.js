@@ -17,7 +17,7 @@ module.exports = {
         var params = {
             Image: {
                 S3Object: {
-                    Bucket: "surehired/" + "8JJhyFZ0Z" + "/" + "cover-photo",
+                    Bucket: "surehired/" + req.body.userId + "/" + "cover-photo",
                     Name: req.body.url
                 }
             },

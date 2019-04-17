@@ -5,30 +5,15 @@ import Nav from '../../components/nav'
 import Footer from '../../components/footer'
 import ReactLoading from 'react-loading';
 import Router from 'next/router'
-import FacebookLogin from 'react-facebook-login';
-
-const responseFacebook = (response) => {
-    console.log(response);
-}
 
 class App extends Component {
     constructor(props) {
         super(props);
-
-        this.handleFacebookClick = this.handleFacebookClick.bind(this);
-
         this.state = {
             loading: false,
             name: localStorage.getItem('name'),
             userId: localStorage.getItem('userId')
         }
-    }
-
-    handleFacebookClick(response) {
-        console.log(response);
-        // save access token userid
-
-        Router.push('/app/results');
     }
 
     render() {
@@ -41,21 +26,28 @@ class App extends Component {
                     <div className="container">
                         <div className="row step-1">
                             <div className="col-md-12">
-                                <h2>Step 3 | Facebook Analysis</h2>
-                                <p>We're almost there!</p>
-                                <p>Let's check how awesome is your Facebook.</p>
-                                <p>We will analyse if there are any social posts which could be deemed as "bad" by your employers.</p>
+                                <h2>Check out your analysis and results here!</h2>
                             </div>
                         </div>
 
-                        <div className="row justify-content-center">
-                            <div className="col-md-12">
-                                <FacebookLogin
-                                    appId="340465570008336"
-                                    autoLoad={true}
-                                    fields="name,email,picture"
-                                    callback={this.handleFacebookClick}
-                                />
+                        <div className="row">
+                            <div className="col-md-6">
+                                <h3>Resume score: </h3>
+                                <p>Analysis comments: </p>
+                            </div>
+                            <div className="col-md-6">
+                                <h3>Resume score: </h3>
+                                <p>Analysis comments: </p>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-6">
+                                <h3>Resume score: </h3>
+                                <p>Analysis comments: </p>
+                            </div>
+                            <div className="col-md-6">
+                                <h3>Resume score: </h3>
+                                <p>Analysis comments: </p>
                             </div>
                         </div>
                     </div>
