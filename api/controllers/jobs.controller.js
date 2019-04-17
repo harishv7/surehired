@@ -1,5 +1,6 @@
 const Promise = require('bluebird');
 const jobService = require('../service/jobs.service');
+const queueService = require('../service/queue.service');
 
 const jobsController = {
     create: function (req, res, next) {
@@ -20,7 +21,17 @@ const jobsController = {
 
     delete: function (req, res, next) {
 
-    }
+    },
+    testQueue: function (req, res, next) {
+        queueService.sendMsg(JSON.stringify({
+            type: "TEST",
+            jobId: '1'
+        })).then(response => {
+            res.send(response);
+        }).catch(e => {
+            res.send(e);
+        })
+    },
 }
 
 module.exports = jobsController;

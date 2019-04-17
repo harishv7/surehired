@@ -3,7 +3,7 @@ const express = require('express')
 const db = require('./db')
 const next = require('next')
 const bodyParser = require('body-parser')
-
+const listener = require('./api/helper/listener');
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
