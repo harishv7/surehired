@@ -6,6 +6,7 @@ var aws = require("aws-sdk");
 var Q = require("q");
 var chalk = require("chalk");
 
+// TODO: require jobs service and call methods there
 
 var Json = {
     "accessKeyId": process.env.AWS_ACCESS_KEY,
@@ -13,7 +14,6 @@ var Json = {
     "region": process.env.AWS_REGION,
     "queueUrl": process.env.AWS_QUEUEURL
 }
-
 
 aws.config.update(Json)
 // Create an instance of our SQS Client.
@@ -29,10 +29,8 @@ var sqs = new aws.SQS({
 var receiveMessage = Q.nbind(sqs.receiveMessage, sqs);
 var deleteMessage = Q.nbind(sqs.deleteMessage, sqs);
 
-
 // ---------------------------------------------------------- //
 // ---------------------------------------------------------- //
-
 
 // When pulling messages from Amazon SQS, we can open up a long-poll which will hold open
 // until a message is available, for up to 20-seconds. If no message is returned in that
@@ -76,6 +74,8 @@ var deleteMessage = Q.nbind(sqs.deleteMessage, sqs);
 
                             if (payload.type == "TEST") {
                                 console.log(payload);
+
+                                // TODO write your own method call here
                             }
                         }
                     }
