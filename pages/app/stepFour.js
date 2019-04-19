@@ -59,7 +59,7 @@ class App extends Component {
                     type: "FACEBOOK",
                     authorization: {
                         token: response.accessToken,
-                        userId: response.userId,
+                        userId: response.userID,
                         imageUrl: response.picture.data.url
                     }
                 }

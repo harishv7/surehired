@@ -15,14 +15,11 @@ const socialMedia = new Schema({
 });
 
 const scores = new Schema({
-    overall: {
-        type: Number,
-    },
     segmented: {
         resume: Schema.Types.Mixed,
-        profilePicture: Number,
-        coverLetter: Number,
-        socialMedia: Number
+        profilePicture: Schema.Types.Mixed,
+        coverLetter: Schema.Types.Mixed,
+        socialMedia: Schema.Types.Mixed
     }
 });
 
