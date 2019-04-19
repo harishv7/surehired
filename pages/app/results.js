@@ -11,8 +11,8 @@ class App extends Component {
         super(props);
         this.state = {
             loading: false,
-            name: localStorage.getItem('name'),
-            userId: localStorage.getItem('userId')
+            name: Cookies.get('name'),
+            userId: Cookies.get('userId')
         }
     }
 

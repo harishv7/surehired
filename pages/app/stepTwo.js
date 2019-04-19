@@ -12,9 +12,9 @@ class App extends Component {
         this.onDrop = this.onDrop.bind(this);
         this.state = {
             loading: false,
-            name: localStorage.getItem('name'),
-            userId: localStorage.getItem('userId'),
-            jobId: localStorage.getItem('jobId')
+            name: Cookies.get('name'),
+            userId: Cookies.get('userId'),
+            jobId: Cookies.get('jobId')
         }
     }
 

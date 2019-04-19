@@ -5,6 +5,7 @@ import Nav from '../../components/nav'
 import Footer from '../../components/footer'
 import ReactLoading from 'react-loading';
 import Router from 'next/router'
+import Cookies from 'js-cookie'
 
 class App extends Component {
     constructor(props) {
@@ -12,9 +13,9 @@ class App extends Component {
         this.onDrop = this.onDrop.bind(this);
         this.state = {
             loading: false,
-            name: window.localStorage.getItem('name'),
-            userId: window.localStorage.getItem('userId'),
-            jobId: window.localStorage.getItem('jobId')
+            name: Cookies.get('name'),
+            userId: Cookies.get('userId'),
+            jobId: Cookies.get('jobId')
         }
     }
 

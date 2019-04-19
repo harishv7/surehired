@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Router from 'next/router'
-
+import Cookies from 'js-cookie'
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -42,9 +42,8 @@ class LoginForm extends React.Component {
       Router.push({
         pathname: '/app/stepFour'
       });
-      // save name, userid in localstorage
-      window.localStorage.setItem("name", content.name);
-      window.localStorage.setItem("userId", content.userId);
+      Cookies.set("name", content.name);
+      Cookies.set("userId", content.userId);
     } else {
       alert("Your credentials are wrong!");
     }

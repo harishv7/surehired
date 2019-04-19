@@ -5,6 +5,7 @@ import Nav from '../../components/nav'
 import Footer from '../../components/footer'
 import ReactLoading from 'react-loading';
 import Router from 'next/router'
+import Cookies from 'js-cookie'
 
 const title = "SureHired"
 const subtitle = ""
@@ -17,8 +18,8 @@ class App extends Component {
         this.onDrop = this.onDrop.bind(this);
         this.state = {
             loading: false,
-            name: window.localStorage.getItem('name'),
-            userId: window.localStorage.getItem('userId')
+            name: Cookies.get('name'),
+            userId: Cookies.get('userId')
         }
     }
 
@@ -64,9 +65,9 @@ class App extends Component {
                 })
             }).then(res => {
                 console.log(res);
-                // store job id in window.localStorage
+
                 res.json().then(json => {
-                    window.localStorage.setItem("jobId", json.jobId);
+                    Cookies.set("jobId", json.jobId);
 
                     // navigate to next step
                     Router.push('/app/stepTwo');

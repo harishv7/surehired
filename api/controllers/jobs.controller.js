@@ -38,11 +38,10 @@ const jobsController = {
     delete: function (req, res, next) {
 
     },
-    testQueue: function (req, res, next) {
-        queueService.sendMsg(JSON.stringify({
-            type: "TEST",
-            jobId: '1'
-        })).then(response => {
+    startAnalytics: function (req, res, next) {
+        const payload = req.body;
+        payload.type = "START"
+        queueService.sendMsg(JSON.stringify(payload)).then(response => {
             res.send(response);
         }).catch(e => {
             res.send(e);

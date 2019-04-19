@@ -6,6 +6,7 @@ import Footer from '../../components/footer'
 import ReactLoading from 'react-loading';
 import Router from 'next/router'
 import FacebookLogin from 'react-facebook-login';
+import Cookies from 'js-cookie'
 
 const responseFacebook = (response) => {
     console.log(response);
@@ -16,13 +17,32 @@ class App extends Component {
         super(props);
 
         this.handleFacebookClick = this.handleFacebookClick.bind(this);
+        this.handleStartAnalytics = this.handleStartAnalytics.bind(this);
 
         this.state = {
             loading: false,
-            name: window.localStorage.getItem('name'),
-            userId: window.localStorage.getItem('userId'),
-            jobId: window.localStorage.getItem('jobId')
+            name: Cookies.get('name'),
+            userId: Cookies.get('userId'),
+            jobId: Cookies.get('jobId'),
+            done: false
         }
+    }
+
+    handleStartAnalytics(event) {
+        event.preventDefault();
+        console.log("Start analytics clicked");
+
+        // send job id
+        fetch('/api/v1/jobs/start-analytics', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                jobId: this.state.jobId
+            })
+        })
     }
 
     handleFacebookClick(response) {
@@ -47,21 +67,12 @@ class App extends Component {
         }).then(res => {
             console.log(res);
             res.json().then(json => {
-                // navigate to next step
-                Router.push('/app/stepFour');
+                this.setState({
+                    done: true
+                })
+                // Router.push('/app/results');
             });
         });
-
-
-        fetch('/api/v1/auth/facebook', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(this.response)
-        }).then();
-        // Router.push('/app/results');
     }
 
     render() {
@@ -74,7 +85,7 @@ class App extends Component {
                     <div className="container">
                         <div className="row step-1">
                             <div className="col-md-12">
-                                <h2>Step 3 | Facebook Analysis</h2>
+                                <h2>Step 4 | Facebook Analysis</h2>
                                 <p>We're almost there!</p>
                                 <p>Let's check how awesome is your Facebook.</p>
                                 <p>We will analyse if there are any social posts which could be deemed as "bad" by your employers.</p>
@@ -91,6 +102,7 @@ class App extends Component {
                                 />
                             </div>
                         </div>
+                        {this.state.done ? <button type="button" class="btn btn-dark" onClick={this.handleStartAnalytics}>Start Analytics</button> : ""}
                     </div>
                 </div>
                 <Footer />
