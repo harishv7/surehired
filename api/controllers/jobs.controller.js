@@ -12,7 +12,11 @@ const jobsController = {
     },
 
     get: function (req, res, next) {
-        res.send("get detail")
+        jobService.getJobs(req.query).then(response => {
+            res.send(response);
+        }).catch(e => {
+            res.send(e);
+        })
     },
 
     patch: function (req, res, next) {

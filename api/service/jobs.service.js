@@ -26,7 +26,7 @@ module.exports.patch = function (jobId, data) {
     })
 }
 
-module.exports.get = function (query) {
+module.exports.getJobs = function (query) {
     return new Promise((resolve, reject) => {
         UserJob.list(query).then(res => {
             console.log(res);
