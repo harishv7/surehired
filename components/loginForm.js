@@ -40,11 +40,11 @@ class LoginForm extends React.Component {
     // perform transition to app page
     if (content.msg == "Success") {
       Router.push({
-        pathname: '/app/stepThree'
+        pathname: '/app/stepFour'
       });
       // save name, userid in localstorage
-      localStorage.setItem("name", content.name);
-      localStorage.setItem("userId", content.userId);
+      window.localStorage.setItem("name", content.name);
+      window.localStorage.setItem("userId", content.userId);
     } else {
       alert("Your credentials are wrong!");
     }

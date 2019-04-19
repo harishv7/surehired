@@ -19,14 +19,40 @@ class App extends Component {
 
         this.state = {
             loading: false,
-            name: localStorage.getItem('name'),
-            userId: localStorage.getItem('userId')
+            name: window.localStorage.getItem('name'),
+            userId: window.localStorage.getItem('userId'),
+            jobId: window.localStorage.getItem('jobId')
         }
     }
 
     handleFacebookClick(response) {
         console.log(response);
         // save access token userid
+        fetch('/api/v1/jobs/' + this.state.jobId, {
+            method: 'PATCH',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                socialMedia: {
+                    type: "FACEBOOK",
+                    authorization: {
+                        token: response.accessToken,
+                        userId: response.userId,
+                        imageUrl: response.picture.data.url
+                    }
+                }
+            })
+        }).then(res => {
+            console.log(res);
+            res.json().then(json => {
+                // navigate to next step
+                Router.push('/app/stepFour');
+            });
+        });
+
+
         fetch('/api/v1/auth/facebook', {
             method: 'POST',
             headers: {
@@ -34,8 +60,8 @@ class App extends Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(this.response)
-        });
-        Router.push('/app/results');
+        }).then();
+        // Router.push('/app/results');
     }
 
     render() {

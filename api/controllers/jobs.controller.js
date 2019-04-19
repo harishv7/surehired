@@ -17,7 +17,18 @@ const jobsController = {
 
     patch: function (req, res, next) {
         const jobId = req.params.jobId
-        jobService.patch(jobId, req.body).then(response => {
+        var payload;
+        if ('socialMedia' in req.body) {
+            payload = {
+                $push: {
+                    socialMedia: req.body.socialMedia
+                }
+            };
+        } else {
+            payload = req.body;
+        }
+
+        jobService.patch(jobId, payload).then(response => {
             res.send(response);
         }).catch(e => {
             res.send(e);
