@@ -19,7 +19,7 @@ const scores = new Schema({
         type: Number,
     },
     segmented: {
-        resume: Number,
+        resume: Schema.Types.Mixed,
         profilePicture: Number,
         coverLetter: Number,
         socialMedia: Number
@@ -56,8 +56,11 @@ var UserJobSchema = new Schema({
     },
     scores: {
         type: scores,
+    },
+    title: {
+        type: String,
+        required: true
     }
-
 });
 
 UserJobSchema.statics = {

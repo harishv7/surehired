@@ -13,7 +13,8 @@ class App extends Component {
         this.state = {
             loading: false,
             name: localStorage.getItem('name'),
-            userId: localStorage.getItem('userId')
+            userId: localStorage.getItem('userId'),
+            jobId: localStorage.getItem('jobId')
         }
     }
 
@@ -30,23 +31,34 @@ class App extends Component {
         formData.append('type', 'cover-letter');
         formData.append('userId', this.state.userId);
 
-        const rawResponse = await fetch('/api/v1/resources', {
+        fetch('/api/v1/resources', {
             method: 'POST',
             body: formData
+        }).then(results => {
+            this.setState({
+                loading: false
+            });
+            return results.json();
+        }).then(json => {
+            console.log(json);
+            // store location in db
+            fetch('/api/v1/jobs/' + this.state.jobId, {
+                method: 'PATCH',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    coverLetter: json.Location
+                })
+            }).then(res => {
+                console.log(res);
+                res.json().then(json => {
+                    // navigate to next step
+                    Router.push('/app/stepThree');
+                });
+            });
         });
-
-        this.setState({
-            loading: false
-        });
-
-        console.log(rawResponse);
-
-        // if all good, navigate to step 3
-        if (rawResponse.status == 200) {
-            Router.push('/app/stepThree');
-        } else {
-            alert("Oops, something went wrong! :(");
-        }
     }
 
     render() {

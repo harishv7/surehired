@@ -33,3 +33,9 @@ module.exports.loginUser = function (data) {
             });
     });
 }
+
+module.exports.facebookLogin = function (data) {
+    return new Promise((resolve, reject) => {
+        // store in db
+    });
+}

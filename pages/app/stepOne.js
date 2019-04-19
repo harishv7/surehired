@@ -17,8 +17,8 @@ class App extends Component {
         this.onDrop = this.onDrop.bind(this);
         this.state = {
             loading: false,
-            name: localStorage.getItem('name'),
-            userId: localStorage.getItem('userId')
+            name: window.localStorage.getItem('name'),
+            userId: window.localStorage.getItem('userId')
         }
     }
 
@@ -40,23 +40,50 @@ class App extends Component {
         formData.append('type', 'resume');
         formData.append('userId', this.state.userId);
 
-        const rawResponse = await fetch('/api/v1/resources', {
+        fetch('/api/v1/resources', {
             method: 'POST',
             body: formData
+        }).then(results => {
+            this.setState({
+                loading: false
+            });
+            return results.json();
+        }).then(json => {
+            console.log(json);
+            // store location in db
+            fetch('/api/v1/jobs/', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    resume: json.Location,
+                    userId: this.state.userId,
+                    title: "RESUME"
+                })
+            }).then(res => {
+                console.log(res);
+                // store job id in window.localStorage
+                res.json().then(json => {
+                    window.localStorage.setItem("jobId", json.jobId);
+
+                    // navigate to next step
+                    Router.push('/app/stepTwo');
+                })
+            });
         });
 
-        this.setState({
-            loading: false
-        });
 
-        console.log(rawResponse);
+        // console.log(rawResponse);
 
-        // if all good, navigate to step 2
-        if (rawResponse.status == 200) {
-            Router.push('/app/stepTwo');
-        } else {
-            alert("Oops, something went wrong! :(");
-        }
+        // // if all good, navigate to step 2
+        // if (rawResponse.status == 200) {
+        //     console.log(rawResponse.json());
+        //     Router.push('/app/stepTwo');
+        // } else {
+        //     alert("Oops, something went wrong! :(");
+        // }
 
     }
 

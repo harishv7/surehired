@@ -39,11 +39,6 @@ h6 {
     height: auto;
 }
 
-.fixed-top.scrolled {
-    background-color: #222 !important;
-    transition: background-color 200ms linear; 
-}
-
 .hero {
     align-items: center;
     background-image: url('../images/cover.jpg');
@@ -111,7 +106,7 @@ a:link .navbar-brand {
 }
 
 .fixed-top.scrolled {
-    background-color: #222 !important;
+    background-color: #E8F0F5 !important;
     transition: background-color 200ms linear;
 }
 

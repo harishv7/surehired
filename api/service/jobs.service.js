@@ -15,16 +15,16 @@ module.exports.createJob = function (data) {
     });
 }
 
-// var patchData = function (merchantId, data) {
-//     return new Promise(function (resolve, reject) {
-//         var query = {'merchantId':  merchantId };
-//         Merchant.updateDoc(query, data).then(updateResponse => {
-//             resolve(updateResponse)
-//         }).catch(e => {
-//             reject(e)
-//         })
-//     })
-// }
+module.exports.patch = function (jobId, data) {
+    return new Promise(function (resolve, reject) {
+        var query = { 'jobId': jobId };
+        UserJob.updateDoc(query, data).then(updateResponse => {
+            resolve(updateResponse)
+        }).catch(e => {
+            reject(e)
+        })
+    })
+}
 
 // var deleteData = function (merchantId, data) {
 //     return new Promise(function (resolve, reject) {

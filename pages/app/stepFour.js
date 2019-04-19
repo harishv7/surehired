@@ -27,7 +27,14 @@ class App extends Component {
     handleFacebookClick(response) {
         console.log(response);
         // save access token userid
-
+        fetch('/api/v1/auth/facebook', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(this.response)
+        });
         Router.push('/app/results');
     }
 

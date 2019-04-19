@@ -13,7 +13,6 @@ const SignUp = () => (
     <div>
         <Head title="Sign Up" />
         <Nav />
-        {/* <Hero title={title} subtitle={subtitle} description={description} /> */}
         <div className="row">
             <div className="col-md-10 offset-md-1">
                 <Jumbotron title={title} subtitle={subtitle} description={description} form={<SignUpForm />} />

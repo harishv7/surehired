@@ -16,7 +16,12 @@ const jobsController = {
     },
 
     patch: function (req, res, next) {
-
+        const jobId = req.params.jobId
+        jobService.patch(jobId, req.body).then(response => {
+            res.send(response);
+        }).catch(e => {
+            res.send(e);
+        })
     },
 
     delete: function (req, res, next) {

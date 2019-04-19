@@ -42,6 +42,7 @@ const Head = props => (
       crossOrigin="anonymous"
     />
     <script src="/static/js/bootstrap.min.js" />
+    <script src="/static/js/myjs.js" />
     <link href="/static/css/styles.css" rel="stylesheet" />
     <meta property="og:url" content={props.url || defaultOGURL} />
     <meta property="og:title" content={props.title || ''} />
