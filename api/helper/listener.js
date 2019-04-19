@@ -6,7 +6,7 @@ var aws = require("aws-sdk");
 var Q = require("q");
 var chalk = require("chalk");
 
-// TODO: require jobs service and call methods there
+const analysisService = require('../service/analysis.service');
 
 var Json = {
     "accessKeyId": process.env.AWS_ACCESS_KEY,
@@ -72,10 +72,11 @@ var deleteMessage = Q.nbind(sqs.deleteMessage, sqs);
                             var msg = data.Messages[i]
                             var payload = JSON.parse(msg.Body)
 
-                            if (payload.type == "TEST") {
+                            if (payload.type == "START") {
                                 console.log(payload);
+                                const jobId = payload.jobId;
 
-                                // TODO write your own method call here
+                                analysisService.getJob(jobId);
                             }
                         }
                     }

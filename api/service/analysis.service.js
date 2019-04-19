@@ -5,6 +5,19 @@ const rekognitionService = require('./rekognition.service');
 const facebookService = require('./facebook.service');
 const jobsService = require('./jobs.service');
 
+
+module.exports.getJob = function (jobId) {
+    jobsService.get({
+        jobId
+    }).then(result => {
+        return this.analysis(result)
+    }).then(response => {
+        console.log(response);
+    }).catch(e => {
+        console.log(e);
+    });
+}
+
 module.exports.analysis = function (data) {
     return new Promise((resolve, reject) => {
         if (data.length > 0) {
@@ -12,26 +25,44 @@ module.exports.analysis = function (data) {
             const resumeUrl = data[0].resume;
             const coverLetterUrl = data[0].coverLetter;
             const profilePicture = data[0].profilePicture;
+            const socialMedia = data[0].socialMedia
 
             console.log(resumeUrl);
             console.log(profilePicture);
 
+            var calls = []
             const resumeCall = processResume(resumeUrl);
+            calls.push(resumeCall)
+
             const coverLetterCall = processCoverLetter(coverLetterUrl);
+            calls.push(coverLetterCall)
+
+            const photoServiceCall = rekognitionService.getFacialAnalysis(data[0].userId, profilePicture.key)
+            calls.push(photoServiceCall)
+
+            var facebook
+            _.map(socialMedia, function (media) {
+                if (media.type == "FACEBOOK") {
+                    facebook = media.authorization
+                }
+            })
 
             // TODO save userid
-            const facebookCall = callFacebookService(data[0].socialMedia[0].authorization.token, "10157024194519043");
-            const photoServiceCall = rekognitionService.getFacialAnalysis(data[0].userId, profilePicture.key)
+            if (facebook) {
+                const facebookCall = callFacebookService(facebook.token, facebook.userId);
+                calls.push(facebookCall)
+            }
 
-            Promise.all([resumeCall, coverLetterCall, facebookCall, photoServiceCall]).then(result => {
+            Promise.all(calls).then(result => {
                 console.log(result)
 
                 var segmentedResults = {
+                    status: "COMPLETED",
                     segmented: {
                         resume: result[0],
                         coverLetter: result[1],
-                        socialMedia: result[2],
-                        profilePicture: result[3]
+                        socialMedia: result[3],
+                        profilePicture: result[2]
                     }
                 }
                 return jobsService.patch(jobId, {

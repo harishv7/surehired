@@ -38,6 +38,7 @@ const jobsController = {
     delete: function (req, res, next) {
 
     },
+
     startAnalytics: function (req, res, next) {
         const payload = req.body;
         payload.type = "START"
