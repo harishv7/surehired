@@ -50,7 +50,7 @@ class App extends Component {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    profilePicture: json.Location
+                    profilePicture: json
                 })
             }).then(res => {
                 console.log(res);

@@ -40,7 +40,7 @@ class LoginForm extends React.Component {
     // perform transition to app page
     if (content.msg == "Success") {
       Router.push({
-        pathname: '/app/stepFour'
+        pathname: '/app/stepOne'
       });
       Cookies.set("name", content.name);
       Cookies.set("userId", content.userId);

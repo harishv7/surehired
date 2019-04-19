@@ -41,7 +41,7 @@ var UserJobSchema = new Schema({
         required: true
     },
     profilePicture: {
-        type: String
+        type: Schema.Types.Mixed
     },
     coverLetter: {
         type: String

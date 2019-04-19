@@ -5,6 +5,7 @@ import Nav from '../../components/nav'
 import Footer from '../../components/footer'
 import ReactLoading from 'react-loading';
 import Router from 'next/router'
+import Cookies from 'js-cookie'
 
 class App extends Component {
     constructor(props) {
