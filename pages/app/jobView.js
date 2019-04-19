@@ -31,7 +31,7 @@ class App extends Component {
     }
 
     getJobs() {
-        fetch('/api/v1/jobs?userId=' + Cookies.get('userId'), {
+        fetch('/api/v1/jobs?jobId=' + Cookies.get('jobId'), {
             method: 'GET'
         }).then((response => {
             return response.json();
