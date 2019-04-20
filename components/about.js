@@ -25,35 +25,35 @@ const About = () => (
           </div>
           <div className="col-md-6 text-center">
             <img
-              className="placeholder-img"
-              src="https://via.placeholder.com/250"
+              className="step-img img-responsive"
+              src="../static/images/steps/dashboard.png"
             />
           </div>
         </div>
+        <br />
         <div className="row">
           <div className="col-md-3">
             <img
-              className="placeholder-img"
-              src="https://via.placeholder.com/150"
+              className="step-img img-responsive"
+              src="../static/images/steps/step-1.png"
             />
           </div>
           <div className="col-md-3">
             <img
-              className="placeholder-img"
-              src="https://via.placeholder.com/150"
+              className="step-img img-responsive"
+              src="../static/images/steps/step-2.png"
             />
           </div>
           <div className="col-md-3">
             <img
-              className="placeholder-img"
-              src="https://via.placeholder.com/150"
+              className="step-img img-responsive"
+              src="../static/images/steps/step-3.png"
             />
           </div>
           <div className="col-md-3">
             <img
-              className="placeholder-img"
-              src="https://via.placeholder.com/150"
-            />
+              className="step-img img-responsive"
+              src="../static/images/steps/step-4.png" />
           </div>
         </div>
       </div>
@@ -62,8 +62,12 @@ const About = () => (
       <div className="row">
         <div className="col-md-6">
           <img
-            className="placeholder-img vertical-align"
-            src="https://via.placeholder.com/350"
+            className="step-img img-responsive"
+            src="../static/images/steps/results-1.png"
+          />
+          <img
+            className="step-img img-responsive"
+            src="../static/images/steps/results-2.png"
           />
         </div>
         <div className="col-md-6">

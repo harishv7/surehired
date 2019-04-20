@@ -334,3 +334,7 @@ a:link .navbar-brand {
 .options-button {
     margin: 1em;
 }
+
+.step-img {
+    width: 100%;
+}
