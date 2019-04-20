@@ -13,6 +13,16 @@ const title = "Analytics Results"
 const subtitle = "View the analysis here!"
 const description = "Your documents have been processed!"
 
+const emotionColorMap = {
+    HAPPY: '#2b7c12',
+    DISGUSTED: '#444135',
+    SURPRISED: "#e6ef67",
+    CALM: "#c4c4c2",
+    ANGRY: "#9b0122",
+    SAD: "#ad0d2d",
+    CONFUSED: "#453e84"
+}
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -125,10 +135,19 @@ class App extends Component {
         }
 
         var profilePictureData = [];
+        var profilePictureEmotions = [];
         if (this.state.profilePicture) {
             console.log(this.state.profilePicture);
             if ("FaceDetails" in this.state.profilePicture && this.state.profilePicture.FaceDetails.length > 0) {
                 profilePictureData = this.state.profilePicture.FaceDetails[0];
+                profilePictureData.Emotions.map((emotion, index) => {
+                    profilePictureEmotions.push({
+                        value: emotion.Confidence,
+                        color: emotionColorMap[emotion.Type],
+                        highlight: "#FF5A5E",
+                        label: emotion.Type
+                    })
+                });
             }
         }
 
@@ -144,27 +163,28 @@ class App extends Component {
                                 <h2>Check out your analysis and results here!</h2>
                             </div>
                         </div>
-                        <div className="row">
+                        <div className="row results-resume card">
                             <div className="col-md-12">
-                                <h3>Resume score: </h3>
+                                <h2>Resume Score</h2>
                                 {this.state.resume ? <p>You seem to be a very {this.state.resume.Sentiment} person!</p> : null}
                                 <Charts data={resumeData} options={{}} />
                             </div>
                         </div>
-                        <div className="row">
+                        <div className="row results-cover-letter card">
                             <div className="col-md-12">
-                                <h3>Cover Letter score: </h3>
+                                <h2>Cover Letter Score</h2>
                                 {this.state.coverLetter ? <p>You seem to be a very {this.state.coverLetter.Sentiment} person!</p> : null}
                                 <Charts data={coverLetterData} options={{}} />
                             </div>
                         </div>
 
-                        <div className="row">
+                        <div className="row results-profile-picture card">
                             <div className="col-md-12">
-                                <h3>Profile Picture score: </h3>
+                                <h2>Profile Picture Score</h2>
+                                <Charts data={profilePictureEmotions} options={{}} />
                                 {(this.state.profilePicture && this.state.profilePicture.FaceDetails) ?
                                     <div>
-                                        <table className="table">
+                                        <table className="table table-dark table-bordered table-striped">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">Age Range</th>
@@ -178,11 +198,11 @@ class App extends Component {
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>You look like you are around {profilePictureData.AgeRange.Low} to {profilePictureData.AgeRange.High} years old.</td>
-                                                    <td>You are smiling {parseFloat(profilePictureData.Smile.Confidence).toFixed(2)}%.</td>
-                                                    <td>{profilePictureData.Sunglasses.Confidence > 50.0 ? "You seem to be wear sunglasses. Don't do that!" : "Nice! You don't seem to be wearing sunglasses!"}</td>
-                                                    <td>{profilePictureData.EyesOpen.Confidence > 50.0 ? "Good job! Your eyes are open and clear in the photo" : "Oops, your eyes seems to be closed in the photo. Take another one!"}</td>
-                                                    <td>{profilePictureData.MouthOpen.Confidence > 50.0 ? "Hmm, your mouth seems to be open in the photo. Try closing it!" : "Good job. Your mouth is closed in the photo."}</td>
+                                                    <td>You look like you are around <b>{profilePictureData.AgeRange.Low}</b> to <b>{profilePictureData.AgeRange.High}</b> years old in the photo.</td>
+                                                    <td>{profilePictureData.Smile.Value === true ? "Nice, you seem to be similing" : "Try smiling a little more in your picture"}</td>
+                                                    <td>{profilePictureData.Sunglasses.Value === true ? "You seem to be wear sunglasses. Don't do that!" : "Nice! You don't seem to be wearing sunglasses!"}</td>
+                                                    <td>{profilePictureData.EyesOpen.Value === true ? "Good job! Your eyes are open and clear in the photo" : "Oops, your eyes seems to be closed in the photo. Take another one!"}</td>
+                                                    <td>{profilePictureData.MouthOpen.Value === true ? "Hmm, your mouth seems to be open in the photo. Try closing it!" : "Good job. Your mouth is closed in the photo."}</td>
                                                     <td>{profilePictureData.Quality.Brightness > 70.0 ? "That's a bright, nice photo! Awesome!" : "Hmm, we think you need a brighter photo."}</td>
                                                     <td>{profilePictureData.Quality.Sharpness > 70.0 ? "That's a sharp photo! Good job human!" : "Hmm, we think you need a sharper photo."}</td>
                                                 </tr>
@@ -192,9 +212,9 @@ class App extends Component {
                                     : null}
                             </div>
                         </div>
-                        <div className="row">
+                        <div className="row results-facebook card">
                             <div className="col-md-12">
-                                <h3>Facebook score: </h3>
+                                <h3>Facebook Score</h3>
                                 <p>Analysis comments: </p>
                             </div>
                         </div>

@@ -57,7 +57,6 @@ module.exports.analysis = function (data) {
                 console.log(result)
 
                 var segmentedResults = {
-                    status: "COMPLETED",
                     segmented: {
                         resume: result[0],
                         coverLetter: result[1],
@@ -66,7 +65,8 @@ module.exports.analysis = function (data) {
                     }
                 }
                 return jobsService.patch(jobId, {
-                    scores: segmentedResults
+                    scores: segmentedResults,
+                    status: "COMPLETED"
                 });
 
             }).then(response => {

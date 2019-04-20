@@ -291,3 +291,16 @@ a:link .navbar-brand {
 .dashboard-table {
     margin-top: 2em;
 }
+
+.results-resume, .results-profile-picture {
+    background-color: #E9ECEF;
+    border-radius: 7px;
+    padding: 3em;
+    margin-top: 2em;
+}
+.results-cover-letter, .results-facebook {
+    background-color: aliceblue;
+    border-radius: 7px;
+    padding: 3em;
+    margin-top: 2em;
+}

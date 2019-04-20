@@ -83,7 +83,7 @@ class App extends Component {
 
                                 <button type="button" className="btn btn-primary" onClick={this.handleCreateJob}>Create Job</button>
 
-                                {this.state.jobs ?
+                                {this.state.jobs && this.state.jobs.length > 0 ?
                                     <table className="dashboard-table table table-dark table-striped table-bordered">
                                         <thead>
                                             <tr>
@@ -93,21 +93,24 @@ class App extends Component {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {this.state.jobs.map(function (job, index) {
-                                                return (
-                                                    <tr key={index}>
-                                                        <th scope="row">{job.title}</th>
-                                                        <td>{job.status}</td>
-                                                        <td><button type="button" className="btn btn-info" onClick={this.handleViewJob.bind(this, job.jobId)} key={index} id={job.jobId}>
-                                                            View Job
+                                            {
+                                                this.state.jobs.map(function (job, index) {
+                                                    return (
+                                                        <tr key={index}>
+                                                            <th scope="row">{job.title}</th>
+                                                            <td>{job.status}</td>
+                                                            <td><button type="button" className="btn btn-info" onClick={this.handleViewJob.bind(this, job.jobId)} key={index} id={job.jobId}>
+                                                                View Job
                                                             </button>
-                                                        </td>
-                                                    </tr>
-                                                )
-                                            }, this)}
+                                                            </td>
+                                                        </tr>
+                                                    )
+                                                }, this)
+
+                                            }
                                         </tbody>
                                     </table>
-                                    : ""}
+                                    : null}
 
                             </div>
                         </div>
