@@ -102,7 +102,7 @@ class App extends Component {
                                 />
                             </div>
                         </div>
-                        {this.state.done ? <button type="button" class="btn btn-dark" onClick={this.handleStartAnalytics}>Start Analytics</button> : ""}
+                        {this.state.done ? <button type="button" className="btn btn-dark" onClick={this.handleStartAnalytics}>Start Analytics</button> : ""}
                     </div>
                 </div>
                 <Footer />

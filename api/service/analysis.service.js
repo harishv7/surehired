@@ -5,9 +5,8 @@ const rekognitionService = require('./rekognition.service');
 const facebookService = require('./facebook.service');
 const jobsService = require('./jobs.service');
 
-
 module.exports.getJob = function (jobId) {
-    jobsService.get({
+    jobsService.getJobs({
         jobId
     }).then(result => {
         return this.analysis(result)

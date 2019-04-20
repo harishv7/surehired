@@ -26,6 +26,17 @@ module.exports.patch = function (jobId, data) {
     })
 }
 
+module.exports.get = function (query) {
+    return new Promise((resolve, reject) => {
+        UserJob.list(query).then(res => {
+            console.log(res);
+            resolve(res)
+        }).catch(e => {
+            reject(e)
+        });
+    });
+}
+
 module.exports.getJobs = function (query) {
     return new Promise((resolve, reject) => {
         UserJob.list(query).then(res => {

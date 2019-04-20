@@ -5,6 +5,7 @@ import Nav from '../../components/nav'
 import Footer from '../../components/footer'
 import ReactLoading from 'react-loading';
 import Router from 'next/router'
+import Cookies from 'js-cookie'
 
 class App extends Component {
     constructor(props) {
@@ -12,8 +13,50 @@ class App extends Component {
         this.state = {
             loading: false,
             name: Cookies.get('name'),
-            userId: Cookies.get('userId')
+            userId: Cookies.get('userId'),
+            jobId: Cookies.get('jobId')
         }
+    }
+
+    componentDidMount() {
+        this.getJobDetails();
+    }
+
+    getJobDetails() {
+        fetch('/api/v1/jobs?jobId=' + Cookies.get('jobId'), {
+            method: 'GET'
+        }).then((response => {
+            return response.json();
+        })).then(list => {
+            console.log(list);
+            if (scores in list) {
+                if (segmented in list.scores) {
+                    if (resume in list.scores.segmented) {
+                        this.setState({
+                            resume: list.scores.segmented.resume
+                        });
+                    }
+                    if (coverLetter in list.scores.segmented) {
+                        this.setState({
+                            coverLetter: list.scores.segmented.coverLetter
+                        })
+                    }
+                    if (profilePicture in list.scores.segmented) {
+                        this.setState({
+                            profilePicture: list.scores.segmented.profilePicture
+                        })
+                    }
+                    if (socialMedia in list.scores.segmented) {
+                        this.setState({
+                            socialMedia: list.scores.segmented.socialMedia
+                        })
+                    }
+                }
+            }
+            this.setState({
+                jobInfo: list
+            })
+        });
     }
 
     render() {
@@ -29,7 +72,7 @@ class App extends Component {
                                 <h2>Check out your analysis and results here!</h2>
                             </div>
                         </div>
-
+                        {JSON.stringify(this.state.jobInfo)}
                         <div className="row">
                             <div className="col-md-6">
                                 <h3>Resume score: </h3>

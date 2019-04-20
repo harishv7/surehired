@@ -20,13 +20,14 @@ class App extends Component {
         this.handleCreateJob = this.handleCreateJob.bind(this);
         this.handleViewJob = this.handleViewJob.bind(this);
 
-
         this.state = {
             loading: false,
             name: Cookies.get('name'),
             userId: Cookies.get('userId')
         }
+    }
 
+    componentDidMount() {
         this.getJobs();
     }
 
@@ -53,14 +54,8 @@ class App extends Component {
         Router.push('/app/stepOne');
     }
 
-    handleViewJob(event) {
-        event.preventDefault();
-    }
-
-    createClickHandler(jobId) {
-        return function () {
-            console.log(jobId)
-        }.bind(this);
+    handleViewJob(data) {
+        console.log(data)
     }
 
     render() {
@@ -78,7 +73,7 @@ class App extends Component {
                                 <p>Simply drag and drop your resume
                                     onto the box or click on it to upload your resume in PDF format.</p>
 
-                                <button type="button" class="btn btn-dark" onClick={this.handleCreateJob}>Create Job</button>
+                                <button type="button" class="btn btn-primary" onClick={this.handleCreateJob}>Create Job</button>
 
                                 {this.state.jobs ?
                                     <table className="table">
@@ -95,10 +90,13 @@ class App extends Component {
                                                     <tr>
                                                         <th scope="row">{job.title}</th>
                                                         <td>{job.status}</td>
-                                                        <td><button type="button" class="btn btn-dark" onClick={this.createClickHandler(job.jobId)}>View Job</button></td>
+                                                        <td><button type="button" className="btn btn-dark" onClick={this.handleViewJob(job)} key={index}>
+                                                            View Job
+                                                            </button>
+                                                        </td>
                                                     </tr>
                                                 )
-                                            })}
+                                            }, this)}
                                         </tbody>
                                     </table>
                                     : ""}
