@@ -7,7 +7,7 @@ const Jumbotron = props => (
             <div className="container">
                 <h1 className="display-4">{props.title}</h1>
                 <p className="lead">{props.subtitle}</p>
-                {props.form}
+                {props.form ? props.form : null}
             </div>
         </div>
     </div>
