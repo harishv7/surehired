@@ -1,5 +1,5 @@
 import Head from '../components/head'
-import Nav from '../components/nav'
+import Nav from '../components/nav-dark'
 import Hero from '../components/hero'
 import Footer from '../components/footer'
 import SignUpForm from '../components/signUpForm'

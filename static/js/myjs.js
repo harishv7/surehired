@@ -36,7 +36,7 @@ $(document).ready(function () {
 
             $('.hero').css({ "background-image": "url('../static/images/bg-images/" + img + "')" });
             currIndex++;
-        }, 7000);
+        }, 2000);
     }
     window.onload = loadBg();
 });

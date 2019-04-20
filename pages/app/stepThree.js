@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone'
 import Head from '../../components/head'
-import Nav from '../../components/nav'
+import Nav from '../../components/nav-dark'
 import Footer from '../../components/footer'
 import ReactLoading from 'react-loading';
 import Router from 'next/router'

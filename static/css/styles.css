@@ -101,7 +101,7 @@ nav {
 .nav-light {
     font-family: Montserrat;
     font-size: 14px;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 2px;
     color: black;
 }
@@ -162,6 +162,10 @@ a:link .navbar-brand {
 #footer .brand-title {
     font-size: 2em;
     padding: 2em;
+}
+
+.brand-title-dark {
+    color: black;
 }
 
 .footer-links {
