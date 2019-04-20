@@ -151,6 +151,46 @@ class App extends Component {
             }
         }
 
+        var facebookData = [];
+
+        if (this.state.socialMedia) {
+            console.log(this.state.socialMedia);
+
+            if (this.state.socialMedia.length > 0) {
+                var positive = 0.0, negative = 0.0, neutral = 0.0, mixed = 0.0;
+                var totalPosts = this.state.socialMedia.length;
+
+                this.state.socialMedia.map((post, index) => {
+                    positive += post.SentimentScore.Positive;
+                    negative += post.SentimentScore.Negative;
+                    neutral += post.SentimentScore.Neutral;
+                    mixed += post.SentimentScore.Mixed;
+                });
+
+                facebookData = [{
+                    value: positive / totalPosts,
+                    color: emotionColorMap.HAPPY,
+                    highlight: "#FFC870",
+                    label: "Postitive"
+                }, {
+                    value: negative / totalPosts,
+                    color: emotionColorMap.SAD,
+                    highlight: "#FFC870",
+                    label: "Negative"
+                }, {
+                    value: neutral / totalPosts,
+                    color: emotionColorMap.CALM,
+                    highlight: "#FFC870",
+                    label: "Neutral"
+                }, {
+                    value: mixed / totalPosts,
+                    color: emotionColorMap.CONFUSED,
+                    highlight: "#FFC870",
+                    label: "Mixed"
+                }]
+            }
+        }
+
         return (
             <div>
                 <Head title="Home" />
@@ -215,7 +255,7 @@ class App extends Component {
                         <div className="row results-facebook card">
                             <div className="col-md-12">
                                 <h3>Facebook Score</h3>
-                                <p>Analysis comments: </p>
+                                <Charts data={facebookData} options={{}} />
                             </div>
                         </div>
                     </div>
