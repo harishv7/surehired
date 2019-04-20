@@ -124,6 +124,14 @@ class App extends Component {
             }];
         }
 
+        var profilePictureData = [];
+        if (this.state.profilePicture) {
+            console.log(this.state.profilePicture);
+            if ("FaceDetails" in this.state.profilePicture && this.state.profilePicture.FaceDetails.length > 0) {
+                profilePictureData = this.state.profilePicture.FaceDetails[0];
+            }
+        }
+
         return (
             <div>
                 <Head title="Home" />
@@ -154,7 +162,34 @@ class App extends Component {
                         <div className="row">
                             <div className="col-md-12">
                                 <h3>Profile Picture score: </h3>
-                                <p>Analysis comments: </p>
+                                {(this.state.profilePicture && this.state.profilePicture.FaceDetails) ?
+                                    <div>
+                                        <table className="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Age Range</th>
+                                                    <th scope="col">Smile</th>
+                                                    <th scope="col">Sunglasses</th>
+                                                    <th scope="col">Eyes Open?</th>
+                                                    <th scope="col">Mouth Open?</th>
+                                                    <th scope="col">Brightness Check</th>
+                                                    <th scope="col">Sharpness Check</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>You look like you are around {profilePictureData.AgeRange.Low} to {profilePictureData.AgeRange.High} years old.</td>
+                                                    <td>You are smiling {parseFloat(profilePictureData.Smile.Confidence).toFixed(2)}%.</td>
+                                                    <td>{profilePictureData.Sunglasses.Confidence > 50.0 ? "You seem to be wear sunglasses. Don't do that!" : "Nice! You don't seem to be wearing sunglasses!"}</td>
+                                                    <td>{profilePictureData.EyesOpen.Confidence > 50.0 ? "Good job! Your eyes are open and clear in the photo" : "Oops, your eyes seems to be closed in the photo. Take another one!"}</td>
+                                                    <td>{profilePictureData.MouthOpen.Confidence > 50.0 ? "Hmm, your mouth seems to be open in the photo. Try closing it!" : "Good job. Your mouth is closed in the photo."}</td>
+                                                    <td>{profilePictureData.Quality.Brightness > 70.0 ? "That's a bright, nice photo! Awesome!" : "Hmm, we think you need a brighter photo."}</td>
+                                                    <td>{profilePictureData.Quality.Sharpness > 70.0 ? "That's a sharp photo! Good job human!" : "Hmm, we think you need a sharper photo."}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    : null}
                             </div>
                         </div>
                         <div className="row">
