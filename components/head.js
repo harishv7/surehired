@@ -44,7 +44,7 @@ const Head = props => (
     <script src="/static/js/bootstrap.min.js" />
     <script src="/static/js/myjs.js" />
     <link href="/static/css/styles.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"></link>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossOrigin="anonymous"></link>
     <meta property="og:url" content={props.url || defaultOGURL} />
     <meta property="og:title" content={props.title || ''} />
     <meta

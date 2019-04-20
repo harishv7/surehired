@@ -7,7 +7,7 @@ module.exports.createUser = function (data) {
     return new Promise((resolve, reject) => {
         var user = new User(data);
         user.save().then(res => {
-            console.log(res);
+            // console.log(res);
             resolve(res)
         }).catch(e => {
             reject(e)

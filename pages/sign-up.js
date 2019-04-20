@@ -18,7 +18,6 @@ const SignUp = () => (
                 <Jumbotron title={title} subtitle={subtitle} description={description} form={<SignUpForm />} />
             </div>
         </div>
-        {/* <SignUpForm /> */}
         <Footer />
     </div>
 )
