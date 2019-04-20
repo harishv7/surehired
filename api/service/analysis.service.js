@@ -5,6 +5,10 @@ const rekognitionService = require('./rekognition.service');
 const facebookService = require('./facebook.service');
 const jobsService = require('./jobs.service');
 
+// Facebook analysis
+var positiveScore = 0.0, neutralScore = 0.0, negativeScore = 0.0, mixedScore = 0.0;
+var totalPostsCount = 0;
+
 module.exports.getJob = function (jobId) {
     jobsService.getJobs({
         jobId
@@ -46,7 +50,6 @@ module.exports.analysis = function (data) {
                 }
             })
 
-            // TODO save userid
             if (facebook) {
                 const facebookCall = callFacebookService(facebook.token, facebook.userId);
                 calls.push(facebookCall)
@@ -55,15 +58,29 @@ module.exports.analysis = function (data) {
             Promise.all(calls).then(result => {
                 console.log(result)
 
+                var socialMediaCollated = {
+                    socialMedia: result[3],
+                    overall: {
+                        positive: positiveScore / totalPostsCount,
+                        negative: negativeScore / totalPostsCount,
+                        neutral: neutralScore / totalPostsCount,
+                        mixed: mixedScore / totalPostsCount
+                    }
+                }
+
                 var segmentedResults = {
                     status: "COMPLETED",
                     segmented: {
                         resume: result[0],
                         coverLetter: result[1],
-                        socialMedia: result[3],
-                        profilePicture: result[2]
+                        profilePicture: result[2],
+                        socialMedia: socialMediaCollated
                     }
                 }
+
+                console.log("SEGMENTED")
+                console.log(segmentedResults)
+
                 return jobsService.patch(jobId, {
                     scores: segmentedResults
                 });
@@ -106,9 +123,15 @@ function callFacebookService(token, userId) {
         facebookService.getPosts(token, userId).then((postData => {
             // console.log(postData)
             var postsCollection = [];
+
             _.map(postData.posts.data, (post) => {
                 if ('message' in post) {
                     var comp = comprehendService.getSentiment(post.message);
+                    positiveScore += comp.SentimentScore.Positive;
+                    negativeScore += comp.SentimentScore.Negative;
+                    mixedScore += comp.SentimentScore.Mixed;
+                    neturalScore += comp.SentimentScore.Neutral;
+                    totalPostsCount += 1;
                     postsCollection.push(comp);
                 }
                 console.log(post);
