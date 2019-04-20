@@ -23,7 +23,7 @@ const Nav = (props) => (
         type="button"
         data-toggle="collapse"
         data-target="#navbar2SupportedContent">
-        <i className="fa fa-bars" aria-hidden="true" />
+        <i className="fa fa-bars" style={{ color: "white" }} aria-hidden="true" />
       </button>
       <div
         className="collapse navbar-collapse text-center justify-content-end"
