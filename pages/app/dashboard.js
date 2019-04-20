@@ -31,7 +31,7 @@ class App extends Component {
         if (this.state.name == null || this.state.userId == null) {
             Router.push('/login');
         } else {
-            this.getJobs();
+            setTimeout(this.getJobs(), 5000);
         }
     }
 
