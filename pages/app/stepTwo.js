@@ -74,7 +74,7 @@ class App extends Component {
             <div>
                 <Head title="Home" />
                 <Nav isLoggedIn={true} />
-                <div className="app-hero">
+                <div className="app-hero step-two filter-light">
                     <div className="container">
                         <div className="row step-1">
                             <div className="col-md-12">

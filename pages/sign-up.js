@@ -13,9 +13,13 @@ const SignUp = () => (
     <div>
         <Head title="Sign Up" />
         <Nav />
-        <div className="row">
-            <div className="col-md-10 offset-md-1">
-                <Jumbotron title={title} subtitle={subtitle} description={description} form={<SignUpForm />} />
+        <div className="app-hero">
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-10 offset-md-1">
+                        <Jumbotron title={title} subtitle={subtitle} description={description} form={<SignUpForm />} />
+                    </div>
+                </div>
             </div>
         </div>
         <Footer />

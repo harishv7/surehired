@@ -16,15 +16,11 @@ const About = () => (
         <div className="row">
           <div className="col-md-6">
             <p className="section-description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-              quis arcu quam. Duis a eleifend diam. Sed orci mauris, cursus
-              vitae nisl malesuada, efficitur pretium erat. Vestibulum vel est
-              ante. Aenean id sollicitudin erat, ut ullamcorper tellus. Nam
-              augue mi, pharetra in vehicula vitae, maximus dignissim elit.
-              Vestibulum ac tincidunt nibh. Cras ac lorem nisi. Praesent
-              suscipit tortor non nunc malesuada, sit amet vestibulum purus
-              commodo. Aliquam vel ipsum mi. Donec non lobortis quam. Nam
-              rhoncus varius nulla sed luctus.
+              SureHired was created for the reason to ensure we can help enhance the chances of
+              job seekers getting hired. Today's market is more competitive than, and it is not
+              as simple as drafting a resume. For this reason, SureHired provides a comprehensive analysis of your resume,
+              cover letter, cover photo and even your Facebook profile to tell you how do you come across as an applicant.
+              All this is done with cutting edge technologies of machine learning and facial recognition.
             </p>
           </div>
           <div className="col-md-6 text-center">
@@ -76,14 +72,9 @@ const About = () => (
             Pro for some.
           </h1>
           <p className="section-description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-            quis arcu quam. Duis a eleifend diam. Sed orci mauris, cursus vitae
-            nisl malesuada, efficitur pretium erat. Vestibulum vel est ante.
-            Aenean id sollicitudin erat, ut ullamcorper tellus. Nam augue mi,
-            pharetra in vehicula vitae, maximus dignissim elit. Vestibulum ac
-            tincidunt nibh. Cras ac lorem nisi. Praesent suscipit tortor non
-            nunc malesuada, sit amet vestibulum purus commodo. Aliquam vel ipsum
-            mi. Donec non lobortis quam. Nam rhoncus varius nulla sed luctus.
+            We want SureHired to benenfit as many people as possible. To do that, we have ensured that the core features will remain free.
+            But, for the Pros, we offer you even more. You can even opt for an actual recruiter to review your resume, cover letter etc. and provide
+            you with actionable tips on how to boost your chances of getting hired in your next dream job!
           </p>
         </div>
       </div>

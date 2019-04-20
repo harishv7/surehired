@@ -59,9 +59,26 @@ h6 {
     transition: background 0.5s linear;
 }
 
+.step-one {
+    background-image: url('../images/bg-images/bg4.jpg') !important;
+}
+
+.step-two {
+    background-image: url('../images/bg-images/bg1.jpg') !important;
+}
+
+.step-three {
+    background-image: url('../images/bg-images/bg2.jpg') !important;
+}
+
+.step-four {
+    background-image: url('../images/bg-images/bg3.jpg') !important;
+}
+
+
 .app-hero {
     align-items: center;
-    background-image: url('../images/bg.jpg');
+    background-image: url('../images/bg-images/bg4.jpg');
     background-size: cover;
     color: #000;
     display: flex;
@@ -304,4 +321,12 @@ a:link .navbar-brand {
     border-radius: 7px;
     padding: 3em;
     margin-top: 2em;
+}
+
+.login-box {
+    border-radius: 7px;
+    margin: 2em;
+    padding: 2em;
+    width: 100%;
+    background-color: rgba(222, 222, 222, 0.9);
 }
