@@ -66,7 +66,7 @@ class App extends Component {
         return (
             <div>
                 <Head title="Home" />
-                <Nav />
+                <Nav isLoggedIn={true} />
                 <div className="app-hero">
                     <div className="container">
                         <div className="row step-1">
@@ -77,7 +77,7 @@ class App extends Component {
                                 <p>Simply drag and drop your resume
                                     onto the box or click on it to upload your resume in PDF format.</p>
 
-                                <button type="button" class="btn btn-primary" onClick={this.handleCreateJob}>Create Job</button>
+                                <button type="button" className="btn btn-primary" onClick={this.handleCreateJob}>Create Job</button>
 
                                 {this.state.jobs ?
                                     <table className="table">
@@ -91,7 +91,7 @@ class App extends Component {
                                         <tbody>
                                             {this.state.jobs.map(function (job, index) {
                                                 return (
-                                                    <tr>
+                                                    <tr key={index}>
                                                         <th scope="row">{job.title}</th>
                                                         <td>{job.status}</td>
                                                         <td><button type="button" className="btn btn-dark" onClick={this.handleViewJob(job)} key={index}>

@@ -73,7 +73,7 @@ class App extends Component {
         return (
             <div>
                 <Head title="Home" />
-                <Nav />
+                <Nav isLoggedIn={true} />
                 <div className="app-hero">
                     <div className="container">
                         <div className="row step-1">

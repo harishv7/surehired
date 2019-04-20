@@ -135,7 +135,7 @@ class App extends Component {
         return (
             <div>
                 <Head title="Home" />
-                <Nav />
+                <Nav isLoggedIn={true} />
                 <Jumbotron title={title} subtitle={subtitle} description={description} />
                 <div className="">
                     <div className="container">

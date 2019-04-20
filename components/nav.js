@@ -10,14 +10,14 @@ const links = [
   return link
 })
 
-const Nav = () => (
+const Nav = (props) => (
   <nav className="navbar navbar-inverse bg-inverse navbar-expand-md fixed-top">
     <div className="container">
-      <a className="navbar-brand" href="/">
+      <span className="navbar-brand">
         <Link href="/index">
           <a className="nav-link brand-title">Sure<b>Hired</b></a>
         </Link>
-      </a>
+      </span>
       <button
         className="navbar-toggler navbar-toggler-right"
         type="button"
@@ -50,9 +50,14 @@ const Nav = () => (
             </Link>
           </li>
           <li className="nav-item">
-            <Link href="/login">
-              <a className="nav-link">LOGIN</a>
-            </Link>
+            {props.isLoggedIn ?
+              <Link href="/app/dashboard">
+                <a className="nav-link">DASHBOARD</a>
+              </Link>
+              : <Link href="/login">
+                <a className="nav-link">LOGIN</a>
+              </Link>}
+
           </li>
         </ul>
       </div>
