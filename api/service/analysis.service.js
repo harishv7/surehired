@@ -47,7 +47,6 @@ module.exports.analysis = function (data) {
                 }
             })
 
-            // TODO save userid
             if (facebook) {
                 const facebookCall = callFacebookService(facebook.token, facebook.userId);
                 calls.push(facebookCall)
