@@ -22,7 +22,8 @@ class App extends Component {
         this.state = {
             loading: false,
             name: Cookies.get('name'),
-            userId: Cookies.get('userId')
+            userId: Cookies.get('userId'),
+            title: 'Untitled'
         }
     }
 
@@ -70,7 +71,7 @@ class App extends Component {
                 body: JSON.stringify({
                     resume: json.Location,
                     userId: this.state.userId,
-                    title: "RESUME"
+                    title: this.state.title
                 })
             }).then(res => {
                 console.log(res);
@@ -83,6 +84,12 @@ class App extends Component {
                 })
             });
         });
+    }
+
+    onChange(event) {
+        this.setState({
+            title: event.target.value
+        })
     }
 
     render() {
@@ -98,10 +105,19 @@ class App extends Component {
                                 <h1>Welcome {this.state.name}!</h1>
                                 <h2>Step 1 | Resume</h2>
                                 <p>You're taking the first step in boosting your chances of getting hired.</p>
-                                <p>Simply drag and drop your resume
-                                    onto the box or click on it to upload your resume in PDF format.</p>
+                                <p>Simply enter a title for your analsis (e.g. the company you're planning to apply for). Next, drag and drop your resume
+                                    onto the box or click on it to upload your resume in <b>readble PDF</b> format.</p>
                             </div>
                         </div>
+
+                        <div className="row">
+                            <div className="col-md-6">
+                                <label>Enter a title for this analysis.</label>
+                                <input type="text" className="form-control" id="title" placeholder="Google Application" onChange={this.onChange.bind(this)} />
+                            </div>
+                        </div>
+
+                        <br />
 
                         <div className="row justify-content-center">
                             <div className="col-md-12">
