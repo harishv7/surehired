@@ -1,6 +1,5 @@
 import Head from '../components/head'
 import Nav from '../components/nav-dark'
-import Hero from '../components/hero'
 import Footer from '../components/footer'
 import LoginForm from '../components/loginForm'
 import Jumbotron from '../components/jumbotron'
@@ -13,7 +12,6 @@ const Login = () => (
   <div>
     <Head title="Login" />
     <Nav />
-    {/* <Hero title={title} subtitle={subtitle} description={description} /> */}
     <div className="row">
       <div className="col-md-10 offset-md-1">
         <Jumbotron title={title} subtitle={subtitle} description={description} form={<LoginForm />} />
