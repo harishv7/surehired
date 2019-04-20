@@ -28,6 +28,12 @@ class App extends Component {
         }
     }
 
+    componentDidMount() {
+        if (this.state.name == null || this.state.userId == null || this.state.jobId == null) {
+            Router.push('/login');
+        }
+    }
+
     handleStartAnalytics(event) {
         event.preventDefault();
         console.log("Start analytics clicked");

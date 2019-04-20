@@ -16,10 +16,19 @@ class App extends Component {
         super(props);
         console.log(props);
         this.onDrop = this.onDrop.bind(this);
+
+        console.log(Cookies.get('name'));
+
         this.state = {
             loading: false,
             name: Cookies.get('name'),
             userId: Cookies.get('userId')
+        }
+    }
+
+    componentDidMount() {
+        if (this.state.name == null || this.state.userId == null) {
+            Router.push('/login');
         }
     }
 
@@ -74,18 +83,6 @@ class App extends Component {
                 })
             });
         });
-
-
-        // console.log(rawResponse);
-
-        // // if all good, navigate to step 2
-        // if (rawResponse.status == 200) {
-        //     console.log(rawResponse.json());
-        //     Router.push('/app/stepTwo');
-        // } else {
-        //     alert("Oops, something went wrong! :(");
-        // }
-
     }
 
     render() {

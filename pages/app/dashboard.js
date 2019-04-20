@@ -28,7 +28,11 @@ class App extends Component {
     }
 
     componentDidMount() {
-        this.getJobs();
+        if (this.state.name == null || this.state.userId == null) {
+            Router.push('/login');
+        } else {
+            this.getJobs();
+        }
     }
 
     getJobs() {

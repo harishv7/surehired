@@ -19,6 +19,12 @@ class App extends Component {
         }
     }
 
+    componentDidMount() {
+        if (this.state.name == null || this.state.userId == null || this.state.jobId == null) {
+            Router.push('/login');
+        }
+    }
+
     async onDrop(acceptedFiles) {
         this.setState({
             loading: true
