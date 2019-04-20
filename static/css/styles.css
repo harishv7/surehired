@@ -256,3 +256,7 @@ a:link .navbar-brand {
     content: ' ';
     background: rgba(0, 0, 0, 0.5); 
 }
+
+.dashboard-table {
+    margin-top: 2em;
+}

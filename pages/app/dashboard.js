@@ -80,12 +80,12 @@ class App extends Component {
                                 <button type="button" className="btn btn-primary" onClick={this.handleCreateJob}>Create Job</button>
 
                                 {this.state.jobs ?
-                                    <table className="table">
+                                    <table className="dashboard-table table table-dark table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                                <th scope="col">Title</th>
-                                                <th scope="col">Status</th>
-                                                <th scope="col">Options</th>
+                                                <th scope="col"><b>TITLE</b></th>
+                                                <th scope="col"><b>STATUS</b></th>
+                                                <th scope="col"><b>OPTIONS</b></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -94,7 +94,7 @@ class App extends Component {
                                                     <tr key={index}>
                                                         <th scope="row">{job.title}</th>
                                                         <td>{job.status}</td>
-                                                        <td><button type="button" className="btn btn-dark" onClick={this.handleViewJob(job)} key={index}>
+                                                        <td><button type="button" className="btn btn-info" onClick={this.handleViewJob(job)} key={index}>
                                                             View Job
                                                             </button>
                                                         </td>
