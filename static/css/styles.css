@@ -330,3 +330,7 @@ a:link .navbar-brand {
     width: 100%;
     background-color: rgba(222, 222, 222, 0.9);
 }
+
+.options-button {
+    margin: 1em;
+}

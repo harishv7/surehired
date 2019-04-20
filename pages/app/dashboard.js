@@ -66,6 +66,16 @@ class App extends Component {
         })
     }
 
+    handleDeleteJob(jobId) {
+        fetch('/api/v1/jobs/' + jobId, {
+            method: 'DELETE'
+        }).then(response => {
+            console.log(response);
+            // reload component
+            this.getJobs();
+        })
+    }
+
     render() {
         return (
             <div>
@@ -99,8 +109,11 @@ class App extends Component {
                                                         <tr key={index}>
                                                             <th scope="row">{job.title}</th>
                                                             <td>{job.status}</td>
-                                                            <td><button type="button" className="btn btn-info" onClick={this.handleViewJob.bind(this, job.jobId)} key={index} id={job.jobId}>
+                                                            <td><button type="button" className="btn options-button btn-info" onClick={this.handleViewJob.bind(this, job.jobId)} key={index} id={job.jobId}>
                                                                 View Job
+                                                            </button>
+                                                                <button type="button" className="btn options-button btn-danger" onClick={this.handleDeleteJob.bind(this, job.jobId)} key={String(index) + 'delete'} id={job.jobId}>
+                                                                    Delete Job
                                                             </button>
                                                             </td>
                                                         </tr>

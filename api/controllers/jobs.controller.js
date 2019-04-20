@@ -40,7 +40,13 @@ const jobsController = {
     },
 
     delete: function (req, res, next) {
-
+        jobService.deleteData({
+            jobId: req.params.jobId
+        }).then(response => {
+            res.send(response);
+        }).catch(e => {
+            res.send(e);
+        })
     },
 
     startAnalytics: function (req, res, next) {

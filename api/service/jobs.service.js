@@ -48,13 +48,12 @@ module.exports.getJobs = function (query) {
     });
 }
 
-// var deleteData = function (merchantId, data) {
-//     return new Promise(function (resolve, reject) {
-//         var query = {'merchantId': merchantId  };
-//         Merchant.remove(query).then(response => {
-//             resolve(response)
-//         }).catch(e => {
-//             reject(e)
-//         })
-//     })
-// }
+module.exports.deleteData = function (query, data) {
+    return new Promise(function (resolve, reject) {
+        UserJob.remove(query).then(response => {
+            resolve(response)
+        }).catch(e => {
+            reject(e)
+        })
+    })
+}
