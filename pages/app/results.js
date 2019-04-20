@@ -80,25 +80,25 @@ class App extends Component {
             resumeData = [
                 {
                     value: this.state.resume.SentimentScore.Positive,
-                    color: "#F7464A",
+                    color: emotionColorMap.HAPPY,
                     highlight: "#FF5A5E",
                     label: "Positive"
                 },
                 {
                     value: this.state.resume.SentimentScore.Negative,
-                    color: "#22e214",
+                    color: emotionColorMap.SAD,
                     highlight: "#5AD3D1",
                     label: " Negative"
                 },
                 {
                     value: this.state.resume.SentimentScore.Neutral,
-                    color: "#8e4e00",
+                    color: emotionColorMap.CALM,
                     highlight: "#FFC870",
                     label: "Neutral"
                 },
                 {
                     value: this.state.resume.SentimentScore.Mixed,
-                    color: "#1c0de8",
+                    color: emotionColorMap.CONFUSED,
                     highlight: "#FFC870",
                     label: "Mixed"
                 }
@@ -110,25 +110,25 @@ class App extends Component {
             console.log(this.state.coverLetter);
             coverLetterData = [{
                 value: this.state.coverLetter.SentimentScore.Positive,
-                color: "#F7464A",
+                color: emotionColorMap.HAPPY,
                 highlight: "#FF5A5E",
                 label: "Positive"
             },
             {
                 value: this.state.coverLetter.SentimentScore.Negative,
-                color: "#22e214",
+                color: emotionColorMap.ANGRY,
                 highlight: "#5AD3D1",
                 label: " Negative"
             },
             {
                 value: this.state.coverLetter.SentimentScore.Neutral,
-                color: "#8e4e00",
+                color: emotionColorMap.CALM,
                 highlight: "#FFC870",
                 label: "Neutral"
             },
             {
                 value: this.state.coverLetter.SentimentScore.Mixed,
-                color: "#1c0de8",
+                color: emotionColorMap.CONFUSED,
                 highlight: "#FFC870",
                 label: "Mixed"
             }];

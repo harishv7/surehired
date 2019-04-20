@@ -34,12 +34,12 @@ class App extends Component {
         }
     }
 
-    handleStartAnalytics(event) {
+    async handleStartAnalytics(event) {
         event.preventDefault();
         console.log("Start analytics clicked");
 
         // send job id
-        fetch('/api/v1/jobs/start-analytics', {
+        const response = await fetch('/api/v1/jobs/start-analytics', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -48,7 +48,10 @@ class App extends Component {
             body: JSON.stringify({
                 jobId: this.state.jobId
             })
-        })
+        });
+
+        console.log(response);
+        Router.push('/app/dashboard');
     }
 
     handleFacebookClick(response) {
@@ -76,7 +79,6 @@ class App extends Component {
                 this.setState({
                     done: true
                 })
-                // Router.push('/app/results');
             });
         });
     }
@@ -91,9 +93,9 @@ class App extends Component {
                     <div className="container">
                         <div className="row step-1">
                             <div className="col-md-12">
-                                <h2>Step 4 | Facebook Analysis</h2>
+                                <h2>Step 4 | Facebook Analysis (Optional)</h2>
                                 <p>We're almost there!</p>
-                                <p>Let's check how awesome is your Facebook.</p>
+                                <p>Let's check how awesome is your Facebook. Entirely optional step!</p>
                                 <p>We will analyse if there are any social posts which could be deemed as "bad" by your employers.</p>
                             </div>
                         </div>
@@ -108,9 +110,16 @@ class App extends Component {
                                 />
                             </div>
                         </div>
-                        {this.state.done ? <button type="button" className="btn btn-dark" onClick={this.handleStartAnalytics}>Start Analytics</button> : ""}
+                        <br />
+                        <hr />
+                        <div className="row text-center">
+                            <div className="col-md-12">
+                                <button type="button" className="btn btn-primary btn-lg" onClick={this.handleStartAnalytics}>Start Analytics</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
                 <Footer />
             </div>
         );
