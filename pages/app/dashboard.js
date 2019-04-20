@@ -58,8 +58,12 @@ class App extends Component {
         Router.push('/app/stepOne');
     }
 
-    handleViewJob(data) {
-        console.log(data)
+    handleViewJob(jobId) {
+        console.log(jobId);
+        Router.push({
+            pathname: '/app/results',
+            query: { jobId: jobId }
+        })
     }
 
     render() {
@@ -94,7 +98,7 @@ class App extends Component {
                                                     <tr key={index}>
                                                         <th scope="row">{job.title}</th>
                                                         <td>{job.status}</td>
-                                                        <td><button type="button" className="btn btn-info" onClick={this.handleViewJob(job)} key={index}>
+                                                        <td><button type="button" className="btn btn-info" onClick={this.handleViewJob.bind(this, job.jobId)} key={index} id={job.jobId}>
                                                             View Job
                                                             </button>
                                                         </td>

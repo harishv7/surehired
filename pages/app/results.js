@@ -20,7 +20,7 @@ class App extends Component {
             loading: false,
             name: Cookies.get('name'),
             userId: Cookies.get('userId'),
-            jobId: Cookies.get('jobId')
+            jobId: this.props.jobId
         }
     }
 
