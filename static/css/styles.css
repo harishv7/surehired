@@ -90,6 +90,37 @@ h6 {
       }
 }
 
+.app-hero-dashboard {
+    align-items: center;
+    background-image: url('../images/dashboard.jpg');
+    background-size: cover;
+    color: #fff;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    min-height: 100vh;
+    height: 100px;
+    padding: 0px;
+    padding-top: 0px;
+    /* Transition properties for fading out into another image */
+    -webkit-transition: background 0.5s linear;
+    -moz-transition: background 0.5s linear;
+    -ms-transition: background 0.5s linear;
+    -o-transition: background 0.5s linear;
+    transition: background 0.5s linear;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: linear-gradient(to bottom right,#002f4b,#dc4225);
+        opacity: .6; 
+      }
+}
+
 nav {
     font-family: Montserrat;
     font-size: 14px;
