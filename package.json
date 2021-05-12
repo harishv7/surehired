@@ -11,7 +11,7 @@
         "aws-sdk": "^2.437.0",
         "bootstrap": "^4.3.1",
         "chalk": "^2.4.2",
-        "chart.js": "^1.1.1",
+        "chart.js": "^2.9.4",
         "connect-multiparty": "^2.2.0",
         "crawler-request": "^1.2.2",
         "dotenv": "^7.0.0",
